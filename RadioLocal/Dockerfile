@@ -9,4 +9,5 @@ COPY ./requirements.txt /app
 RUN pip install --no-cache-dir --requirement /app/requirements.txt
 COPY . /app
 
+ENV IN_DOCKER=1
 CMD ["python3", "src/main.py"]
