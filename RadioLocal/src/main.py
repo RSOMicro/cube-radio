@@ -5,6 +5,8 @@ from routes import station_routes
 from health import HealthService
 from config import settings
 
+#test github action
+
 from fastapi.openapi.utils import get_openapi
 
 app = FastAPI(title="RadioLocal Service", version="1.0.0")
