@@ -1,0 +1,53 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: radiolocal
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: radiolocal
+  template:
+    metadata:
+      labels:
+        app: radiolocal
+    spec:
+      containers:
+        - image: veso266/radiolocal:latest
+          name: radiolocal
+          imagePullPolicy: Always
+          envFrom:
+            - configMapRef:
+                name: radiolocal-config
+            - secretRef:
+                name: radiolocal-secret
+          ports:
+            - containerPort: 8081
+              name: server
+          livenessProbe:
+            httpGet:
+              path: api/radio/health/liveness
+              port: server
+            initialDelaySeconds: 20
+            periodSeconds: 3
+          readinessProbe:
+            httpGet:
+              path: api/radio/health/readiness
+              port: server
+            initialDelaySeconds: 20
+            periodSeconds: 3
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: radiolocal
+spec:
+  type: ClusterIP
+  ports:
+    - port: 8081
+      protocol: TCP
+      targetPort: server
+  selector:
+    app: radiolocal
