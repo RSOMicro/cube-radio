@@ -10,7 +10,6 @@ pip install -r requirements.txt
 python3 src/main.py
 ```
 ## Running with docker
-TODO
 ```bash
 docker build -t radio-local .
 docker run -p 8080:8080 --env-file .env radio-local
