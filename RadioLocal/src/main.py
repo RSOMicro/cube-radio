@@ -1,3 +1,4 @@
+import os
 import uvicorn
 from fastapi import FastAPI
 from routes import station_routes
@@ -43,4 +44,14 @@ def custom_openapi():
 app.openapi = custom_openapi
 
 if __name__ == "__main__":
-    uvicorn.run("src.main:app", host="0.0.0.0", port=settings.service_port, reload=True)
+
+    # Detect if running inside Docker using environment variable
+    IN_DOCKER = os.environ.get("IN_DOCKER") == "1"
+
+    if IN_DOCKER:
+        uvicorn.run(app,
+                    host="0.0.0.0",
+                    port=settings.service_port)
+    else:
+        # PyCharm local execution (file run mode)
+        uvicorn.run("src.main:app", host="0.0.0.0", port=settings.service_port, reload=True)
