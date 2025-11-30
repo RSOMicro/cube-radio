@@ -1,0 +1,18 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: mein-ingress
+  annotations:
+    ingress.kubernetes.io/rewrite-target: /$1
+spec:
+  ingressClassName: nginx
+  rules:          
+    - http:
+        paths:
+          - path: /api/radio
+            pathType: Prefix
+            backend:
+              service:
+                name: radiolocal
+                port:
+                  number: 8081
