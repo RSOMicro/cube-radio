@@ -33,6 +33,17 @@ def custom_openapi():
             "type": "http",
             "scheme": "bearer",
             "bearerFormat": "JWT",
+            "description":
+    """
+    Provide a Bearer JWT token.
+            
+    ### Example JWT Payload
+    {
+        "company_id": "0",
+        "user_id": "1",
+        "exp": 99962801319
+    }
+    """
         }
     }
     for path in openapi_schema["paths"].values():
