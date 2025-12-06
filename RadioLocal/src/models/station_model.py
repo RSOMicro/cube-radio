@@ -16,3 +16,13 @@ class Station(BaseModel):
 
     class Config:
         arbitrary_types_allowed = True
+        json_schema_extra = {
+            "example": {
+                "_id": "693428a6a77b514aed6e8af4",
+                "name": "Radio Banovina",
+                "description": "Slušaju svi - slušajte i vi!",
+                "logo_url": "https://www.radio-banovina.hr/wp-content/uploads/2015/01/logo-120_00000.png",
+                "stream_url": "https://audio.radio-banovina.hr:9998/stream",
+                "user_id": "1"
+            }
+        }
