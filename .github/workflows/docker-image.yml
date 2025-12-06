@@ -6,11 +6,6 @@ on:
     paths:
       - 'RadioLocal/**'
       - '.github/workflows/docker-image.yml'
-  pull_request:
-    branches: [ main ]
-    paths:
-      - 'RadioLocal/**'
-      - '.github/workflows/docker-image.yml'
 
 jobs:
   build:
