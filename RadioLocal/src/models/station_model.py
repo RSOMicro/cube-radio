@@ -8,7 +8,7 @@ class Station(BaseModel):
     description: str
     logo_url: str
     stream_url: str
-    company_id: Optional[str] = None  # will always be taken from JWT
+    user_id: Optional[str] = None  # will always be taken from JWT
 
     @validator("id", pre=True)
     def objectid_to_str(cls, v):
