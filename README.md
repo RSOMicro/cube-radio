@@ -7,6 +7,7 @@ Deploy our services
 kubectl apply -f k8s/radiolocal-config.yml
 kubectl apply -f k8s/radiolocal-secret.yml
 kubectl apply -f k8s/radiolocal-deployment.yml
+kubectl rollout restart deployment.apps/radiolocal
 ```
 
 Check our pods
