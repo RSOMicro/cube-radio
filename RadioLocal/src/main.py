@@ -4,6 +4,7 @@ from fastapi import FastAPI
 from routes import station_routes
 from health import HealthService
 from config import settings
+from remote_logger import setup_logging
 
 from fastapi.openapi.utils import get_openapi
 
@@ -11,7 +12,7 @@ app = FastAPI(title="RadioLocal Service", version="1.0.0")
 app.include_router(prefix="/api/radio", router=station_routes.router)
 app.include_router(prefix="/api/radio/health", router=HealthService.router)
 
-
+logger = setup_logging()
 
 @app.get("/")
 def health_check():
@@ -55,6 +56,8 @@ def custom_openapi():
 app.openapi = custom_openapi
 
 if __name__ == "__main__":
+
+    logger.error("To je pa test da dela")
 
     # Detect if running inside Docker using environment variable
     IN_DOCKER = os.environ.get("IN_DOCKER") == "1"
