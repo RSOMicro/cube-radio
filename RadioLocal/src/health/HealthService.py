@@ -1,9 +1,9 @@
 from fastapi import FastAPI, APIRouter, Depends
 from fastapi_health import health
 from database import get_database
-import logging
+from remote_logger import setup_logging
 
-logger = logging.getLogger(__name__)
+logger = setup_logging()
 
 router = APIRouter(tags=["health"])
 
