@@ -16,3 +16,10 @@ spec:
                 name: radiolocal
                 port:
                   number: 8081
+          - path: /api/user
+            pathType: Prefix
+            backend:
+              service:
+                name: userservice
+                port:
+                  number: 3001
