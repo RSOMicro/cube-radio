@@ -3,9 +3,9 @@ from supertokens_python.recipe.session import SessionContainer
 from supertokens_python.recipe.session.framework.fastapi import verify_session
 from supertokens_python.recipe.multitenancy.asyncio import list_all_tenants
 
-from src.database import get_current_user, create_tenant, assign_user_to_tenant, get_company_by_user_id
-from src.models.tenant_model import TenantResponse, TenantCreate, AssignUserToTenantResponse
-from src.models.company_model import CompanyResponse
+from database import get_current_user, create_tenant, assign_user_to_tenant, get_company_by_user_id
+from models.tenant_model import TenantResponse, TenantCreate, AssignUserToTenantResponse
+from models.company_model import CompanyResponse
 
 router = APIRouter(tags=["authentication"])
 
