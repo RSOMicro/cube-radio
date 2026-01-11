@@ -6,6 +6,7 @@ on:
     paths:
       - 'RadioLocal/**'
       - 'UserService/**'
+      - 'frontend/**'
       - '.github/workflows/docker-image.yml'
 
 jobs:
@@ -18,7 +19,9 @@ jobs:
           - name: radiolocal
             path: RadioLocal
           - name: userservice
-            path: UserService
+            path: UserService          
+          - name: frontend
+            path: frontend
 
     steps:
       - uses: actions/checkout@v3
