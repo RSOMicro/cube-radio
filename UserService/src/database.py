@@ -11,52 +11,33 @@ from remote_logger import setup_logging
 logger = setup_logging()
 
 # Create a connection pool at import time
-try:
-    db_pool = pooling.MySQLConnectionPool(
-        pool_name="radiodb_pool",
-        pool_size=5,
-        host=settings.db_host,
-        user=settings.db_user,
-        password=settings.db_password,
-        database=settings.db_name,
-        connection_timeout=5,
-    )
-except Exception as e:
-    logger.critical(f"Failed to create MySQL connection pool: {e}")
-    db_pool = None
-
+db_pool = None
 
 def get_database():
-    """
-    Safely gets a MySQL connection from the pool.
-    If the database is unavailable, raises a handled exception
-    instead of crashing the service.
-    """
-    if not db_pool:
-        raise HTTPException(status_code=503, detail="Database not available")
+    global db_pool
+    if db_pool is None:
+        try:
+            db_pool = pooling.MySQLConnectionPool(
+                pool_name="radiodb_pool",
+                pool_size=5,
+                host=settings.db_host,
+                port=3306,
+                user=settings.db_user,
+                password=settings.db_password,
+                database=settings.db_name,
+                connection_timeout=10,
+            )
+        except Exception as e:
+            logger.critical(f"Failed to create MySQL connection pool: {e}")
+            raise HTTPException(status_code=503, detail="Database not available")
 
     try:
         conn = db_pool.get_connection()
-
-        # MySQL "ping" equivalent
-        conn.ping(reconnect=True, attempts=1, delay=0)
-
+        conn.ping(reconnect=True, attempts=3, delay=1)
         return conn
 
-    except errors.PoolError as e:
-        logger.error(f"MySQL pool exhausted: {e}")
-        raise HTTPException(status_code=503, detail="Database not available")
-
-    except errors.InterfaceError as e:
-        logger.error(f"MySQL interface error: {e}")
-        raise HTTPException(status_code=503, detail="Database not available")
-
-    except errors.OperationalError as e:
-        logger.error(f"MySQL operational error: {e}")
-        raise HTTPException(status_code=503, detail="Database not available")
-
     except Exception as e:
-        logger.error(f"Unexpected database error: {e}")
+        logger.error(f"Database connection failed: {e}")
         raise HTTPException(status_code=503, detail="Database not available")
 
 def insert_user(user_id: str, user: UserCreate) -> None:
