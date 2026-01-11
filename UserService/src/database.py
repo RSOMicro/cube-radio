@@ -5,7 +5,7 @@ import mysql.connector
 from mysql.connector import errors, pooling
 from fastapi import HTTPException
 from config import settings
-from src.models.user_model import UserCreate
+from models.user_model import UserCreate
 from remote_logger import setup_logging
 
 logger = setup_logging()
