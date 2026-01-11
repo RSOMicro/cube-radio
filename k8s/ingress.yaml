@@ -23,3 +23,10 @@ spec:
                 name: userservice
                 port:
                   number: 3001
+          - path: /auth
+            pathType: Prefix
+            backend:
+              service:
+                name: userservice
+                port:
+                  number: 3001
