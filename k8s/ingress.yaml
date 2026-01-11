@@ -30,3 +30,10 @@ spec:
                 name: userservice
                 port:
                   number: 3001
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: userservice
+                port:
+                  number: 3000
