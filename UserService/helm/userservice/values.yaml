@@ -1,0 +1,39 @@
+image:
+  repository: veso266/userservice
+  tag: latest
+  pullPolicy: IfNotPresent
+
+replicaCount: 1
+
+service:
+  type: ClusterIP
+  port: 3001
+
+env:
+  DB_HOST: userservice-db-mariadb
+  DB_PORT: "3306"
+  DB_NAME: user_service
+  DB_USER: auth_service
+  DB_PASSWORD: LivinOnLove
+
+  USER_API_URL: http://localhost
+  WEBSITE_URL: http://localhost
+  WEBSITE_PORT: "3000"
+  SERVICE_PORT: "3001"
+
+  JWT_SECRET: supersecretkey
+  SUPER_TOKENS_API_URL: https://try.supertokens.com
+  
+probes:
+  liveness:
+    path: /api/user/health/liveness
+    port: 3001
+    initialDelaySeconds: 10
+    periodSeconds: 10
+    failureThreshold: 3
+  readiness:
+    path: /api/user/health/readiness
+    port: 3001
+    initialDelaySeconds: 5
+    periodSeconds: 5
+    failureThreshold: 3
