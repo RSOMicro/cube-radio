@@ -34,6 +34,6 @@ spec:
             pathType: Prefix
             backend:
               service:
-                name: userservice
+                name: frontend
                 port:
                   number: 3000
