@@ -16,21 +16,24 @@ def get_session():
     return True
 
 
-#def is_database_online():
-#    """
-#    Health check condition to verify MongoDB connection.
-#    Returns True if the database is reachable, False otherwise.
-#    """
-#    try:
-#        db = get_database()
-#        # Optionally try a lightweight query or ping if needed
-#        db.command("ping")
-#        return True
-#    except Exception as e:
-#        # Log the exception but don’t crash the health endpoint
-#        logger.error(f"DB Health check failed: {e}")
-#        return False
+def is_database_online():
+    """
+    Readiness check:
+    - Returns True if DB is reachable
+    - Returns False if connection/query fails
+    """
+    try:
+        conn = get_database()
+        db = conn.cursor()
+
+        # SQLAlchemy session or engine
+        db.execute("SELECT 1")
+
+        return True
+    except Exception as e:
+        logger.error(f"DB health check failed: {e}")
+        return False
 
 # Attach the /health endpoint to this router
 router.add_api_route("/liveness", health([service_ready]))
-#router.add_api_route("/readiness", health([is_database_online]))
+router.add_api_route("/readiness", health([is_database_online]))
