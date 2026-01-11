@@ -23,6 +23,6 @@ class Station(BaseModel):
                 "description": "Slušaju svi - slušajte i vi!",
                 "logo_url": "https://www.radio-banovina.hr/wp-content/uploads/2015/01/logo-120_00000.png",
                 "stream_url": "https://audio.radio-banovina.hr:9998/stream",
-                "user_id": "1"
+                "user_id": "59e482b3-254e-4f7f-be90-da716e8c5035"
             }
         }

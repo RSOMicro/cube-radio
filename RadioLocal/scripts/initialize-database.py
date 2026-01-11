@@ -79,10 +79,10 @@ def initialize_database():
     add_station(
         name="Murski Val",
         description="Radio Murski val sem glas severovzhodne Slovenije že od leta 1958",
-        logo_url="https://murskival.si/wp-content/uploads/2025/09/logo-original.svg",
+        logo_url="https://static.mytuner.mobi/media/tvos_radios/442/radio-murski-val-946-fm.fb8d3624.png",
         stream_url="https://stream.murskival.si",
-        company_id="0",
-        user_id="0"
+        company_id="1",
+        user_id="7ecb758c-1cdc-4580-8fab-7c2de78d3948"
     )
 
     add_station(
@@ -90,8 +90,8 @@ def initialize_database():
         description="Slušaju svi - slušajte i vi!",
         logo_url="https://www.radio-banovina.hr/wp-content/uploads/2015/01/logo-120_00000.png",
         stream_url="https://audio.radio-banovina.hr:9998/stream",
-        company_id="0",
-        user_id="1"
+        company_id="1",
+        user_id="7ecb758c-1cdc-4580-8fab-7c2de78d3948"
     )
 
     add_station(
@@ -99,8 +99,8 @@ def initialize_database():
         description="Più giovane che mai",
         logo_url="https://www.sorrriso.it/wp-content/uploads/2018/09/logo-radio-sorrriso.png",
         stream_url="https://ice02.fluidstream.net/sorriso.mp3",
-        company_id="1",
-        user_id="0"
+        company_id="2",
+        user_id="bcf08366-39e9-4611-bc2d-18ddaefdec9b"
     )
 
     add_station(
@@ -108,8 +108,8 @@ def initialize_database():
         description="Radio Romantica è una radio IP, DAB FM e WEB. Tutta la musica che ti ha fatto innamorare",
         logo_url="https://www.radioromantica.net/images/romantica500.png",
         stream_url="https://nr12.newradio.it:8656/stream",
-        company_id="1",
-        user_id="1"
+        company_id="2",
+        user_id="bcf08366-39e9-4611-bc2d-18ddaefdec9b"
     )
 
     print("✅ Database initialized with sample stations.")
