@@ -7,8 +7,20 @@ from config import settings
 from remote_logger import setup_logging
 
 from fastapi.openapi.utils import get_openapi
+from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI(title="RadioLocal Service", version="1.0.0")
+
+origins = ["*"]
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
 app.include_router(prefix="/api/radio", router=station_routes.router)
 app.include_router(prefix="/api/radio/health", router=HealthService.router)
 
@@ -57,7 +69,7 @@ app.openapi = custom_openapi
 
 if __name__ == "__main__":
 
-    logger.error("To je pa test da dela")
+    logger.error("Service has started")
 
     # Detect if running inside Docker using environment variable
     IN_DOCKER = os.environ.get("IN_DOCKER") == "1"

@@ -5,6 +5,7 @@ on:
     branches: [ main ]
     paths:
       - 'RadioLocal/**'
+      - 'UserService/**'
       - '.github/workflows/docker-image.yml'
 
 jobs:
@@ -16,6 +17,8 @@ jobs:
         service:
           - name: radiolocal
             path: RadioLocal
+          - name: userservice
+            path: UserService
 
     steps:
       - uses: actions/checkout@v3

@@ -1,9 +1,9 @@
 from pymongo import MongoClient, errors
 from config import settings
 from fastapi import HTTPException
-import logging
+from remote_logger import setup_logging
 
-logger = logging.getLogger(__name__)
+logger = setup_logging()
 
 def get_database():
     """
