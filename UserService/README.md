@@ -31,7 +31,7 @@ kubectl delete pvc -l app.kubernetes.io/name=mariadb
 3. Verify mysql is working
 ```
 kubectl run userservice-db-mariadb-client --rm --tty -i --restart='Never' --image  registry-1.docker.io/bitnami/mariadb:latest --namespace default --command -- bash
-mysql -h userservice-db-mariadb.default.svc.cluster.local -uroot -p user_service
+mysql -h userservice-db-mariadb.default.svc.cluster.local -uauth_service -p user_service
 ```
 
 4. Install UserService helm
