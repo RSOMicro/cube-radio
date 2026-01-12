@@ -19,4 +19,4 @@ env:
   VITE_RADIO_REMOTE_API_PORT: "8081"
 
   VITE_WEBSITE_URL: http://radioservice.dxing.si
-  VITE_WEBSITE_PORT: "3000"
+  VITE_WEBSITE_PORT: "80"
