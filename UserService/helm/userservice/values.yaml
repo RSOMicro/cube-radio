@@ -16,8 +16,8 @@ env:
   DB_USER: auth_service
   DB_PASSWORD: LivinOnLove
 
-  USER_API_URL: http://localhost
-  WEBSITE_URL: http://localhost
+  USER_API_URL: http://radioservice.dxing.si
+  WEBSITE_URL: http://radioservice.dxing.si
   WEBSITE_PORT: "3000"
   SERVICE_PORT: "3001"
 
