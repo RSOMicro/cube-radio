@@ -14,7 +14,10 @@ from remote_logger import setup_logging
 app = FastAPI(
     title="User Service",
     version="1.0.0",
-    redirect_slashes=False
+    docs_url="/api/user/docs",           # Swagger UI
+    redirect_slashes=False,
+    openapi_url="/api/user/openapi.json" # OpenAPI JSON
+
 )
 
 # SuperTokens middleware
