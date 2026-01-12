@@ -1,0 +1,22 @@
+image:
+  repository: veso266/frontend
+  tag: latest
+  pullPolicy: IfNotPresent
+
+replicaCount: 1
+
+service:
+  type: ClusterIP
+  port: 3000
+
+env:
+  VITE_API_URL: http://radioservice.dxing.si
+  VITE_API_PORT: "80"
+  VITE_RADIO_API_URL: http://radioservice.dxing.si
+  VITE_RADIO_API_PORT: "80"
+
+  VITE_RADIO_REMOTE_API_URL: http://radioservice.dxing.si
+  VITE_RADIO_REMOTE_API_PORT: "8081"
+
+  VITE_WEBSITE_URL: http://radioservice.dxing.si
+  VITE_WEBSITE_PORT: "3000"
