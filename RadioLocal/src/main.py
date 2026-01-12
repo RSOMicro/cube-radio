@@ -9,7 +9,7 @@ from remote_logger import setup_logging
 from fastapi.openapi.utils import get_openapi
 from fastapi.middleware.cors import CORSMiddleware
 
-app = FastAPI(title="RadioLocal Service", version="1.0.0")
+app = FastAPI(title="RadioLocal Service", version="1.0.0", docs_url="/api/radio/docs", openapi_url="/api/radio/openapi.json")
 
 origins = ["*"]
 
